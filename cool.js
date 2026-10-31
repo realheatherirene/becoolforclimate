@@ -11,7 +11,7 @@
      about   the longer description, shown on the page under the card
      ask     the step's main question
      org     the question for organizations, speaking for themselves
-     all     the question for everyone, checking what organizations say
+     all     the question for the public, checking what organizations say
    ========================================================================== */
 
 import { renderSiteFoot } from "./core/site-foot.js";
@@ -22,7 +22,7 @@ const TITLE = {
   tagline: "a climate conversation tool",
   lenses: [
     { label: "For organizations", line: "Tell the truth about your impacts." },
-    { label: "For everyone", line: "Check those claims with open eyes." }
+    { label: "For the public", line: "Check those claims with open eyes." }
   ]
 };
 
@@ -33,7 +33,7 @@ const STEPS = [
     about: "Map out what we know, identify what we don't know, and strip away the corporate greenwashing to find the baseline truth.",
     ask: "Is this position backed by reliable evidence, or is it supported by unproven claims?",
     org: "What can we prove about our climate claims, and what are we still guessing?",
-    all: "What proof backs this claim, and who gains if I believe it?"
+    all: "What proof backs this organization's claim, and who gains if I believe it?"
   },
   {
     letter: "O",
@@ -41,7 +41,7 @@ const STEPS = [
     about: "Look beneath the surface at the background data, material supply chains, and underlying policy factors that keep the problem in place.",
     ask: "How do these operational structures and supply chains drive the broader problem?",
     org: "What materials, energy, and rules are behind what we make and do?",
-    all: "What's behind this product or promise, and who could show me the whole picture?"
+    all: "What's behind this product or promise, and will the organization show the whole picture?"
   },
   {
     letter: "O",
@@ -49,15 +49,15 @@ const STEPS = [
     about: "Test out a highly doable, small-scale alternative in your own life or organization to actively challenge the status quo.",
     ask: "What specific decisions are within your immediate power to change, pivot, or stop right now?",
     org: "What's one small change we could test this month, and who can approve it?",
-    all: "What's one choice that's mine to change, try, or stop right now?"
+    all: "What could this organization change, try, or stop right now, and what is it promising to do?"
   },
   {
     letter: "L",
     title: "Live your values",
     about: "Evaluate the real-world results of your trial, see what worked, and turn that successful experiment into a new baseline.",
     ask: "Do your habits and decisions match the values you say matter?",
-    org: "Which of our stated values show up in how we spend, hire, and partner, and which don't yet?",
-    all: "Which value matters most to me, and how can I make it part of my week?"
+    org: "Do the goods and services we provide live up to the values we state in public?",
+    all: "Does this organization live its own stated values in what it sells and does, and do those values match mine?"
   }
 ];
 
@@ -92,7 +92,7 @@ function stepCard(s, tag = "p") {
   <div class="card-head">${mark(s.letter)}<${tag} class="card-name">${esc(s.title)}</${tag}></div>
   <p class="card-ask">${esc(s.ask)}</p>
   ${lens("For organizations", s.org)}
-  ${lens("For everyone", s.all)}
+  ${lens("For the public", s.all)}
   <p class="card-foot">${esc(NAME)}</p>
 </div>`;
 }
