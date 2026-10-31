@@ -1,0 +1,69 @@
+<!doctype html>
+<!-- ==========================================================================
+     #BeCOOLforClimate: the pocket guide
+     ==========================================================================
+     COOL's four steps as five playing-card size cards, to read here or
+     print and cut out. cool.js holds every word on the cards and builds
+     them; this file holds only the page shell.
+     ========================================================================== -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Content Security Policy: code, styles, fonts, and images may come
+     only from this site and Google Fonts. The page has no inline
+     scripts, so no fingerprints are needed. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<title>#BeCOOLforClimate: a climate conversation tool</title>
+<meta name="description" content="COOL is a four-point prompt sequence that helps people navigate climate conversations with confidence, clarity, and critical thinking.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=ADLaM+Display&family=Varela+Round&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/core/atlas.css">
+<link rel="stylesheet" href="/cool.css">
+</head>
+<body>
+<header class="page-header">
+  <h1>#BeCOOLforClimate</h1>
+  <p class="tagline">a climate conversation tool</p>
+</header>
+
+<main>
+  <section class="intro">
+    <p><strong>COOL</strong> is a four&#8209;point prompt sequence that helps people navigate climate conversations with confidence, clarity, and critical thinking.</p>
+    <p><strong>C-O-O-L</strong> stands for: <strong>Clarify</strong> your actions, <strong>Observe</strong> your impacts, <strong>Own</strong> your responsibility, and <strong>Live</strong> your values</p>
+    <p>It's a discussion map designed to help both individuals and organizations communicate clearly, make meaningful choices, and push for the systemic changes needed to protect and beautify our home planet.</p>
+  </section>
+
+  <noscript><p>The cards are built by a script. Turn on JavaScript to use this page.</p></noscript>
+
+  <section aria-labelledby="deckTitle">
+    <h2 id="deckTitle">Use the pocket guide</h2>
+    <p>Each step asks two ways. Organizations use COOL to tell the truth about their impacts. Everyone else uses it to check those claims with open eyes.</p>
+    <ul class="deck" id="deck"></ul>
+  </section>
+
+  <section aria-labelledby="backTitle">
+    <h2 id="backTitle">Card back</h2>
+    <p>One back for every card.</p>
+    <div class="deck" id="backDeck"></div>
+  </section>
+
+  <section class="print-set" aria-labelledby="printTitle">
+    <h2 id="printTitle">Print the pocket guide</h2>
+    <p>Prints on letter paper at playing-card size (2.5 &times; 3.5 inches), all five cards on one page, with lines to cut along. Print at 100% scale, not "fit to page."</p>
+    <p class="check"><input type="checkbox" id="withBacks"> <label for="withBacks">Add a page of card backs, for two-sided printing</label></p>
+    <p><button type="button" class="go" id="printBtn">Print the cards</button></p>
+    <p>Or download a ready-made PDF: <a href="/assets/COOL_Pocket_Guide_Cut_Sheet.pdf">one-sided</a> or <a href="/assets/COOL_Pocket_Guide_Two_Sided.pdf">two-sided</a>.</p>
+  </section>
+</main>
+
+<footer class="site-foot" id="siteFoot"></footer>
+
+<!-- The print sheet: filled by cool.js, shown only when printing. -->
+<div class="sheet" id="sheet"></div>
+
+<script type="module" src="/cool.js"></script>
+</body>
+</html>
