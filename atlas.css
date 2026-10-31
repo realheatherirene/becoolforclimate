@@ -1,0 +1,309 @@
+/* ==========================================================================
+   CORE ATLAS: how the Climate Trailway looks
+   ==========================================================================
+   Every page loads this file first. It is the only place the brand colors,
+   their text shades, and their light tints are written down, and it holds
+   the pieces every page shares: the base text, the page header, the
+   footer, and pills.
+   Each page's own stylesheet adds only its layout.
+   ========================================================================== */
+
+:root {
+  /* The six brand colors. Chosen so every pair looks clearly different,
+     including for common types of color blindness. If one changes, also
+     check the text shades and tints below and the label colors in
+     core/climate-trailway.js; core/index.html flags anything that falls
+     below 4.5:1. */
+  --red-color: #EB0333;
+  --orange-color: #E98B21;
+  --yellow-color: #FCCD01;
+  --green-color: #46760F;
+  --blue-color: #196BB7;
+  --indigo-color: #231566;
+
+  /* Text shades: each color's darker version for words on white or on a
+     light tint. Every one clears 4.5:1 against white. Red, Green, Blue,
+     and Indigo already clear it at full strength, so their shade is the
+     same as the color; Orange and Yellow are darkened toward black until
+     they do. Yellow is darkened further (#786200), so it also clears
+     4.5:1 on its own light tint (5.3:1 on --yellow-tint-1). */
+  --red-text: #EB0333;
+  --orange-text: #AA6518;
+  --yellow-text: #786200;
+  --green-text: #46760F;
+  --blue-text: #196BB7;
+  --indigo-text: #231566;
+
+  /* Light tints: three for each color, lightest first. The Trail uses
+     them for its trail tints and borders. Hand-picked in the brand deck
+     (CC_Branding_091926.pptx, slide 6), so they are not worked out from
+     the colors above: if the palette changes, choose these again.
+     core/index.html shows all 18. */
+  --yellow-tint-1: #FFF2CC; --yellow-tint-2: #F9ED91; --yellow-tint-3: #F9DD67;
+  --orange-tint-1: #FBE5D6; --orange-tint-2: #F8CBAD; --orange-tint-3: #F4B183;
+  --red-tint-1: #F8C4C4; --red-tint-2: #F4A6A6; --red-tint-3: #EF8181;
+  --indigo-tint-1: #E6E0F8; --indigo-tint-2: #CFC5F1; --indigo-tint-3: #AA97E5;
+  --green-tint-1: #E2F0D9; --green-tint-2: #C5E0B4; --green-tint-3: #A9D18E;
+  --blue-tint-1: #DEEBF7; --blue-tint-2: #BDD7EE; --blue-tint-3: #71AADD;
+
+  /* Brand Accents */
+  --brand-sky: #74C1DF;
+  --brand-teal: #1494B9;
+  --brand-lime: #90BB3E;
+
+  /* Global Light UI Colors */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8FAFC;
+  --bg-tertiary: #F1F5F9;
+
+  --text-primary: #212121;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+
+  --border-color: #E2E8F0;
+  --border-strong: #CBD5E1;
+
+  /* Shadows */
+  --shadow-soft: 0 4px 6px -1px rgba(0,0,0,0.04);
+  --shadow-hover: 0 6px 12px rgba(0,0,0,0.06);
+}
+
+/* ==========================================================================
+   Global Base Styles & Resets
+   ========================================================================== */
+
+* { box-sizing: border-box; }
+
+html, body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Varela Round', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hide scrollbar for Chrome, Safari, and Opera */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge, and Firefox */
+html,
+body {
+  -ms-overflow-style: none;  /* IE and Legacy Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+/* Keeps the page's first and last margins inside the page. */
+body {
+  display: flow-root;
+}
+
+/* ==========================================================================
+   Page frame: the same margins on every page (the Trail, the core
+   reference page, and the small pages). 40px above, 48px below,
+   20px at the sides on phones; on wider screens the page is one centered
+   column, 62rem (992px) wide, with everything left-aligned in it. Pages
+   set no margins of their own: change them here.
+   ========================================================================== */
+body {
+  max-width: calc(62rem + 2.5rem);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 3rem;
+}
+
+/* The footer every page shares (core/site-foot.js; the home and 404
+   pages hold typed copies): the legal links, the note, the owner line. */
+.site-foot {
+  margin-top: 3rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.site-foot ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.2rem;
+  margin: 0 0 0.6rem;
+  padding: 0;
+  list-style: none;
+}
+
+.site-foot a {
+  color: var(--text-secondary);
+}
+
+.site-foot p {
+  max-width: 44rem;
+  margin: 0 0 0.6rem;
+}
+
+.site-foot p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   Page header: the title and one-line description at the top of every page
+   ========================================================================== */
+
+.page-header {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.page-header h1 {
+  font-family: 'ADLaM Display', 'Varela Round', sans-serif;
+  font-size: 2.3rem;
+  font-weight: 500;
+  color: var(--brand-teal);
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.page-header p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ==========================================================================
+   Shared page pieces
+   ========================================================================== */
+
+/* "Where to go next" buttons at the foot of a page: the neutral pill,
+   a little larger. */
+.next-btn {
+  padding: 0.5rem 1.1rem;
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   Small pages: the "page not found" page (404.html) and the one-line
+   pages that forward old addresses
+   ========================================================================== */
+
+.small-page .lede {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--green-color);
+}
+
+.small-page + main .intro {
+  max-width: 38rem;
+  margin: 2rem 0 1.6rem;
+  font-size: 1.05rem;
+}
+
+/* The one green button. */
+.go {
+  display: inline-block;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  background: var(--green-color);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.go:hover {
+  background: #375D0B;
+}
+
+.go:focus-visible {
+  outline: 3px solid var(--brand-teal);
+  outline-offset: 2px;
+}
+
+/* A page that moved: one plain line and a link. */
+.moved {
+  font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   Pills: rounded buttons and filters
+   ========================================================================== */
+
+.pill-btn {
+  font-family: inherit;
+  border-radius: 9999px;
+  font-weight: 700;
+  cursor: pointer;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Color pills. One recipe for every pill on the site: an 8% tint of the
+   color, a 25% tint border, and words in the text shade mixed 88% with
+   black, so they always clear 4.5:1. core/index.html shows each one with
+   its contrast. Each color class names its color and text shade; the rule
+   after them turns those into the pill. */
+.pill-yellow { --pill-color: var(--yellow-color); --pill-text: var(--yellow-text); }
+.pill-orange { --pill-color: var(--orange-color); --pill-text: var(--orange-text); }
+.pill-red { --pill-color: var(--red-color); --pill-text: var(--red-text); }
+.pill-indigo { --pill-color: var(--indigo-color); --pill-text: var(--indigo-text); }
+.pill-green { --pill-color: var(--green-color); --pill-text: var(--green-text); }
+.pill-blue { --pill-color: var(--blue-color); --pill-text: var(--blue-text); }
+.pill-yellow, .pill-orange, .pill-red,
+.pill-indigo, .pill-green, .pill-blue {
+  background-color: color-mix(in srgb, var(--pill-color) 8%, white);
+  border: 1px solid color-mix(in srgb, var(--pill-color) 25%, white);
+  color: color-mix(in srgb, var(--pill-text) 88%, black);
+}
+
+/* The neutral pill, used for "where to go next" buttons. */
+.pill-all {
+  --pill-color: var(--text-muted);
+  --pill-text: var(--text-secondary);
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-strong);
+  color: var(--text-secondary);
+}
+
+/* Filter pills: hover darkens only the border, so the words keep their
+   contrast. Keyboard focus adds a ring in the same color as the words,
+   which clears 4.5:1 on the pill's tint. The ring sits just inside the
+   pill's edge, so the edge of the page can't cut it off. On the selected
+   pill (dark fill) the ring is white. The small lift is skipped for
+   anyone who has asked their device to reduce motion. */
+.pill-btn:hover {
+  border-color: var(--pill-color, var(--text-muted));
+}
+.pill-btn:focus-visible {
+  border-color: var(--pill-color, var(--text-muted));
+  outline: 2px solid color-mix(in srgb, var(--pill-text, var(--text-secondary)) 88%, black);
+  outline-offset: -4px;
+}
+.pill-btn.active:focus-visible {
+  outline-color: var(--bg-primary);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pill-btn { transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease; }
+  .pill-btn:hover { transform: translateY(-1px); }
+}
+
+/* ==========================================================================
+   Global Print Defaults
+   ========================================================================== */
+
+@media print {
+    body {
+        max-width: none;
+        padding: 0;
+        background: var(--bg-primary) !important;
+        color: var(--text-primary) !important;
+    }
+}
